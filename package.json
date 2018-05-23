@@ -1,0 +1,32 @@
+{
+  "name": "erronetic-js",
+  "version": "0.0.3",
+  "description": "Erronetic client library.",
+  "author": "Code sphinx",
+  "keywords": [
+    "debugging",
+    "errors",
+    "exceptions",
+    "logging",
+    "erronetic"
+  ],
+  "repository": "git://github.com/codesphinxx/erronetic-js.git",
+  "license": "GPL-2.0",
+  "scripts": {
+    "build": "webpack --env build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.5.1",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.9.0",
+    "express": "^4.16.2",
+    "webpack": "^2.7.0",
+    "yargs": "^8.0.2"
+  }
+}
