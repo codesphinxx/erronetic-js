@@ -7,6 +7,6 @@ Erronetic client library
 
 ## Usage
 
-
-### Stats Management & Progression
-1. create element icon
+initialize - erronetic.init(API_KEY, [DEBUG_ON]);
+save error - erronetic.writeException(error, data);
+Save message - erronetic.writeMessage(message, data);
