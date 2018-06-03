@@ -224,7 +224,7 @@ class erronetic
         if (!message) return;
         var msg = this._create(message); 
         msg.extra = utils.primitify(data);  
-        if (utils.isLogLevel(data.level)) msg.level = data.level;  
+        if (data.level && utils.isLogLevel(data.level)) msg.level = data.level;  
         this._commit(msg);
     }
 

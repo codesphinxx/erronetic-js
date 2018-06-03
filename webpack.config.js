@@ -2,28 +2,19 @@
 
 const webpack = require('webpack');
 
-const MinifyPlugin = require("babel-minify-webpack-plugin");
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
-const env  = require('yargs').argv.env; // use --env with webpack 2
 
 let fileName = 'erronetic';
 
 let plugins = [], outputFile;
-
-if (env === 'build') 
-{
-  plugins.push(new MinifyPlugin());
-  outputFile = fileName.toLowerCase() + '.min.js';
-} 
-else 
-{
-  outputFile = fileName.toLowerCase() + '.js';
-}
+plugins.push(new UglifyPlugin());
+outputFile = 'erronetic.min.js';
 
 const config = {
   entry: __dirname + '/src/index.js',
   output: {
-    path: __dirname + '/public',
+    path: __dirname + '/build',
     filename: outputFile,
     libraryTarget: 'umd',
     umdNamedDefine: true
