@@ -1,5 +1,5 @@
 export default {
-    VERSION:'0.0.2',
+    VERSION:'0.0.5',
     LOGS: {
         INFO: 'info',
         WARN: 'warn',
