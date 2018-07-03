@@ -18,7 +18,7 @@ Initializes the erronetic logging service.
 ```html
 erronetic.init(API_KEY, { url:String, method:String, debug:Boolean });
 ```
-API_KEY: application api key(only required when saving errors to our hosted service)
+API_KEY: application api key(only required when saving errors to our hosted service) <br/>
 options: options used internally to route logs
 
 
@@ -27,7 +27,7 @@ Sends a error exception.
 ```html
 erronetic.writeException(error, data);
 ```
-error (required): a JavaScript Error object
+error (required): a JavaScript Error object <br/>
 data: additional data to send(must contains values of string, number, or boolean)
 
 
@@ -36,7 +36,7 @@ Sends a custom info-level message.
 ```html
 erronetic.writeMessage(message, data);
 ```
-message (required): 
+message (required): the custom message to log <br/>
 data: additional data to send(must contains values of string, number, or boolean)
 
 

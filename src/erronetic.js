@@ -228,7 +228,7 @@ class erronetic
     /**
     * Sends a custom info-level message.
     * @method erronetic.writeMessage
-    * @param {String} message the error message to send
+    * @param {String} message the custom message to log
     * @param {Object} data additional data to send(must contains values of string, number, or boolean)
     */
     writeMessage(message, data)
