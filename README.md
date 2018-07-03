@@ -19,7 +19,10 @@ Initializes the erronetic logging service.
 erronetic.init(API_KEY, { url:String, method:String, debug:Boolean });
 ```
 API_KEY: application api key(only required when saving errors to our hosted service) <br/>
-options: options used internally to route logs
+options: options used internally to route logs <br/>
+options.url: logging service endpoint <br/>
+options.method: http request method - default [POST] <br/>
+options.debug: logger debug mode. True will display errors in console.
 
 
 ### erronetic.writeException
