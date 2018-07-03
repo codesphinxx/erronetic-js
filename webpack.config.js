@@ -5,34 +5,29 @@ const webpack = require('webpack');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 
-let fileName = 'erronetic';
-
 let plugins = [], outputFile;
-plugins.push(new UglifyPlugin());
+plugins.push(new UglifyPlugin({sourceMap:true}));
 outputFile = 'erronetic.min.js';
+let sourceMapFile = outputFile + '.map';
 
 const config = {
   entry: __dirname + '/src/index.js',
+  devtool:'source-map',
+  mode: "production",
   output: {
     path: __dirname + '/build',
     filename: outputFile,
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
+    sourceMapFilename:sourceMapFile
+
   },
-  externals: {
-      
-    },
   module: {
     rules: [
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/
-      },
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
       }
     ]
   },

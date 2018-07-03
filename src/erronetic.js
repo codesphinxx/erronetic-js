@@ -11,14 +11,15 @@ class erronetic
     {
         if (!erronetic.instance)
         {
-            this.debugMode = false;
-            this._app_id = '';
+            this.debug = false;
+            this._app_key = '';
             this._parser = new UAParser();
             this._xhttp = null;
             this._meta = null;
-            this._log = console.log;
             this._client_id = -1;
+            this._method = 'POST';
             this._protocol = 'http';
+            this._commit_url = config.XHTTP_URI;
             
             erronetic.instance = this;
         }
@@ -39,7 +40,7 @@ class erronetic
         });
     }
 
-    _generateClient() 
+    _generateSignature() 
     { 
         var bar = '|';
         
@@ -82,7 +83,7 @@ class erronetic
     _create(message, errorReport)
     {
         var data = new Exception(message);
-        data.secret = this._app_id;
+        data.secret = this._app_key;
         data.client_id = this._client_id;        
 
         if (this._meta)
@@ -158,7 +159,7 @@ class erronetic
 
     _commit(data)
     {
-        this._xhttp.open('POST', this._protocol + config.XHTTP_URI, true);
+        this._xhttp.open(this._method, this._protocol + this._commit_url, true);
         if (this._xhttp instanceof XMLHttpRequest)
         {
             this._xhttp.setRequestHeader('Content-Type', 'application/json');
@@ -176,7 +177,7 @@ class erronetic
 
     _logDebug(...data)
     {
-        if (this.debugMode)
+        if (this.debug)
         {
             console.log(data);
         }
@@ -185,15 +186,26 @@ class erronetic
     /**
     * Initializes the erronetic logging service.
     * @method erronetic.init
-    * @param {String} id - the client application unique id that was given
-    * @param {Boolean} mode - logger debug mode. True will display errors in console.
+    * @param {String} key - the client application api key
+    * @param {Object} options - options to customize logger.
+    * @param {String} options.url - custom url to save exceptions.
+    * @param {String} options.method - request method when saving log to custom url. Default [POST]
+    * @param {Boolean} options.debug - logger debug mode. True will display errors in console.
     */
-    init(id, mode = false)
+    init(key, options)
     {
-        this._app_id = id;
-        this.debugMode = mode;
+        this._app_key = key;
+        this.debug = Boolean(options.debug || false);
         this._protocol = window.location.protocol=='https' ? 'https' : 'http';
-        this._generateClient();
+        if (!utils.isNullOrEmpty(options.url))
+        {
+            this._commit_url = options.url;
+        }
+        if (!utils.isNullOrEmpty(options.method))
+        {
+            this._method = options.method;
+        }
+        this._generateSignature();
         this._xhttp = this._createCORSRequest(this._onreadystatechange.bind(this));
     }
 
