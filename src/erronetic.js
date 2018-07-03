@@ -187,7 +187,7 @@ class erronetic
     * Initializes the erronetic logging service.
     * @method erronetic.init
     * @param {String} key - the client application api key
-    * @param {Object} options - options to customize logger.
+    * @param {Object} options - options used to route logs.
     * @param {String} options.url - custom url to save exceptions.
     * @param {String} options.method - request method when saving log to custom url. Default [POST]
     * @param {Boolean} options.debug - logger debug mode. True will display errors in console.
@@ -243,7 +243,7 @@ class erronetic
     /**
     * Sends a custom error exception.
     * @method erronetic.writeException
-    * @param {Error} error optional parameters to format message data.
+    * @param {Error} error Error object to log.
     * @param {Object} data additional data to send(must contains values of string, number, or boolean)
     */
     writeException(error, data)
