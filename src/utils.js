@@ -96,7 +96,7 @@ export default class utils
 
     static isLogLevel(value)
     {
-        return LEVELS.indexOf(value) !== -1;
+        return value ? (LEVELS.indexOf(value) !== -1) : false;
     }
 
     static isObject(what) 
