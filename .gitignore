@@ -1,3 +1,6 @@
 node_modules/
 .vscode/
+build/index.html
 /package-lock.json
+/.gitignore
+/server.js

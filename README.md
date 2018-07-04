@@ -18,7 +18,7 @@ Initializes the erronetic logging service.
 ```html
 erronetic.init(API_KEY, { url:String, method:String, debug:Boolean });
 ```
-API_KEY: application api key(only required when saving errors to our hosted service) <br/>
+API_KEY: application api key <br/>
 options: options used internally to route logs <br/>
 options.url: logging service endpoint <br/>
 options.method: http request method - default [POST] <br/>

@@ -18,7 +18,7 @@ class erronetic
             this._meta = null;
             this._client_id = -1;
             this._method = 'POST';
-            this._protocol = 'http';
+            this._protocol = 'http:';
             this._commit_url = config.XHTTP_URI;
             
             erronetic.instance = this;
@@ -194,16 +194,28 @@ class erronetic
     */
     init(key, options)
     {
-        this._app_key = key;
+        this._app_key = key;        
         this.debug = Boolean(options.debug || false);
-        this._protocol = window.location.protocol=='https' ? 'https' : 'http';
+        this._protocol = window.location.protocol=='https' ? 'https:' : 'http:';
         if (!utils.isNullOrEmpty(options.url))
         {
+            if (options.url.indexOf('https:',0)!=-1)
+            {
+                options.url = options.url.replace('https:', '');
+            }
+            else if (options.url.indexOf('http:',0)!=-1)
+            {
+                options.url = options.url.replace('http:', '');
+            }
             this._commit_url = options.url;
         }
         if (!utils.isNullOrEmpty(options.method))
         {
-            this._method = options.method;
+            options.method = options.method.toUpperCase();
+            if (['POST','PUT','GET', 'DELETE'].indexOf(options.method) != -1)
+            {
+                this._method = options.method;
+            }            
         }
         this._generateSignature();
         this._xhttp = this._createCORSRequest(this._onreadystatechange.bind(this));
