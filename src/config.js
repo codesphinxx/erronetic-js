@@ -5,5 +5,5 @@ export default {
         WARN: 'warn',
         ERROR: 'error'
     },
-    XHTTP_URI: '//{server-path}/log'
+    XHTTP_URI: '//erronetic.herokuapp.com/log'
 }

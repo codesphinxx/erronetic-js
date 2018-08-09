@@ -1,5 +1,5 @@
 # Erronetic-js
-Erronetic is a JavaScript error tracking library
+Erronetic is a JavaScript error tracking library <br/>
 Build v0.0.5
 
 ## Build

@@ -159,12 +159,15 @@ class erronetic
 
     _commit(data)
     {
-        this._xhttp.open(this._method, this._commit_url, true);
-        if (this._xhttp instanceof XMLHttpRequest)
+        if (this._xhttp)
         {
-            this._xhttp.setRequestHeader('Content-Type', 'application/json');
+            this._xhttp.open(this._method, this._commit_url, true);
+            if (this._xhttp instanceof XMLHttpRequest)
+            {
+                this._xhttp.setRequestHeader('Content-Type', 'application/json');
+            }        
+            this._xhttp.send(JSON.stringify(data));
         }        
-        this._xhttp.send(JSON.stringify(data));
     }
 
     _writeError(name, message, error)
