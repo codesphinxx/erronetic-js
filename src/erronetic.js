@@ -16,6 +16,7 @@ class erronetic
             this._parser = new UAParser();
             this._xhttp = null;
             this._meta = null;
+            this._user_version = null;
             this._client_id = -1;
             this._method = 'POST';
             this._protocol = 'http:';
@@ -89,6 +90,10 @@ class erronetic
         if (this._meta)
         {
             data.meta = this._meta;
+        }
+        if (this._user_version)
+        {
+            data.appVersion = this._user_version;
         }
         
         try
@@ -269,6 +274,19 @@ class erronetic
         msg.extra = utils.primitify(data);       
         msg.level = config.LOGS.ERROR;
         this._commit(msg);
+    }
+
+    /**
+    * Allows you to set your application version.
+    * @method erronetic.setAppVersion
+    * @param {String} error App version info
+    */
+    setAppVersion(version)
+    {
+        if (!utils.isNullOrEmpty(version))
+        {
+            this._user_version = String(version);
+        }        
     }
 }
 

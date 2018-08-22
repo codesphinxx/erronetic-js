@@ -1,6 +1,5 @@
 # Erronetic-js
 Erronetic is a JavaScript error tracking library <br/>
-Build v0.0.5
 
 ## Build
 1. Install dependencies: `npm install`
@@ -49,3 +48,10 @@ Assigns custom meta data that will be sent along with each exception.
 erronetic.setMetaContext(data);
 ```
 data (required): custom meta data, can be user to store user details
+
+### erronetic.setAppVersion
+Allows you to set your application version.
+```html
+erronetic.setAppVersion(version);
+```
+version (required): application version as string

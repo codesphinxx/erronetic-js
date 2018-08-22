@@ -1,18 +1,19 @@
 /* global __dirname, require, module*/
 
 const webpack = require('webpack');
-
-const UglifyPlugin = require('uglifyjs-webpack-plugin');
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 const path = require('path');
 
 let plugins = [], outputFile;
-plugins.push(new UglifyPlugin({sourceMap:true}));
+plugins.push(new MinifyPlugin());
+plugins.push(new webpack.LoaderOptionsPlugin({ options: {} }));
+
 outputFile = 'erronetic.min.js';
 let sourceMapFile = outputFile + '.map';
 
 const config = {
   entry: __dirname + '/src/index.js',
-  devtool:'source-map',
+  devtool:'none',
   mode: "production",
   output: {
     path: __dirname + '/build',

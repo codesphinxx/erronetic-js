@@ -22,6 +22,7 @@ export default class Exception
         this.client_id = -1;
         this.meta = {};
         this.extra = {};
+        this.appVersion = '';
     }    
 
     addStack(error)
