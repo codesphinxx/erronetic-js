@@ -1,6 +1,6 @@
 {
   "name": "erronetic-js",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Erronetic client library.",
   "author": "Code sphinx",
   "keywords": [
@@ -28,5 +28,6 @@
     "eslint-loader": "^1.9.0",
     "webpack": "^4.14.0",
     "webpack-command": "^0.4.0"
-  }
+  },
+  "dependencies": {}
 }

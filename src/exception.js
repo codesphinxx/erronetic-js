@@ -13,16 +13,18 @@ export default class Exception
         this.os = '';
         this.timestamp = Date.now();
         this.url = location.href;
+        this.parent_url = location.href;
         this.user_agent = navigator.userAgent;
         this.secret = '';
         this.browser = '';
         this.browser_name = '';
         this.logger = 'javascript';
-        this.version = config.VERSION;
+        this.version = __VERSION__;
         this.client_id = -1;
         this.meta = {};
         this.extra = {};
         this.appVersion = '';
+        if (window.frameElement) this.parent_url = window.frameElement.src;
     }    
 
     addStack(error)

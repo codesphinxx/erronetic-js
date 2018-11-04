@@ -86,7 +86,7 @@ class erronetic
         var data = new Exception(message);
         data.secret = this._app_key;
         data.client_id = this._client_id;        
-
+      
         if (this._meta)
         {
             data.meta = this._meta;
@@ -166,7 +166,7 @@ class erronetic
     {
         if (this._xhttp)
         {
-            this._xhttp.open(this._method, this._commit_url, true);
+            this._xhttp.open(this._method, this._protocol+this._commit_url, true);
             if (this._xhttp instanceof XMLHttpRequest)
             {
                 this._xhttp.setRequestHeader('Content-Type', 'application/json');
@@ -205,7 +205,11 @@ class erronetic
         this._app_key = key;  
         options = options || {};     
         this.debug = Boolean(options.debug || false);
-        this._protocol = window.location.protocol=='https' ? 'https:' : 'http:';
+        
+        if (window.location.protocol.indexOf('https:')!=-1)
+        {
+            this._protocol = window.location.protocol;
+        }
         if (!utils.isNullOrEmpty(options.url))
         {
             if (options.url.indexOf('https:')!=-1)
@@ -257,7 +261,7 @@ class erronetic
         if (!message) return;
         var msg = this._create(message); 
         msg.extra = utils.primitify(data);  
-        if (utils.isLogLevel(data.level)) msg.level = data.level;  
+        if (data!=null && data!=undefined && utils.isLogLevel(data.level)) msg.level = data.level;  
         this._commit(msg);
     }
 

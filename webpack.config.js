@@ -1,15 +1,17 @@
-/* global __dirname, require, module*/
-
+const fs = require('fs');
+const path = require('path');
 const webpack = require('webpack');
 const MinifyPlugin = require("babel-minify-webpack-plugin");
-const path = require('path');
 
-let plugins = [], outputFile;
-plugins.push(new MinifyPlugin());
-plugins.push(new webpack.LoaderOptionsPlugin({ options: {} }));
+let pkg = JSON.parse(fs.readFileSync(__dirname + '/package.json').toString());
 
-outputFile = 'erronetic.min.js';
-let sourceMapFile = outputFile + '.map';
+let plugins = [
+  new MinifyPlugin(),
+  new webpack.DefinePlugin({
+    __VERSION__: JSON.stringify(pkg.version),
+  }),
+  new webpack.LoaderOptionsPlugin({ options: {} })
+];
 
 const config = {
   entry: __dirname + '/src/index.js',
@@ -17,10 +19,9 @@ const config = {
   mode: "production",
   output: {
     path: __dirname + '/build',
-    filename: outputFile,
+    filename: 'erronetic.min.js',
     libraryTarget: 'umd',
-    umdNamedDefine: true,
-    sourceMapFilename:sourceMapFile
+    umdNamedDefine: true
 
   },
   module: {
