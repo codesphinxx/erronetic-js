@@ -71,7 +71,11 @@ export default class utils
                 if (PRIMITIVES.indexOf(data_type) != -1)
                 {
                     result.push(value[i]);
-                }                
+                } 
+                else if (value[i] instanceof Date)
+                {
+                    result.push(value[i]);
+                }               
             }
         }
         else if (typeof value === 'object')

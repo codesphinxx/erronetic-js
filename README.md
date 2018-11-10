@@ -55,3 +55,7 @@ Allows you to set your application version.
 erronetic.setAppVersion(version);
 ```
 version (required): application version as string
+
+
+### TODO
+1. utils.stringify to handling Date values.

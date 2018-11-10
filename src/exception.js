@@ -24,7 +24,12 @@ export default class Exception
         this.meta = {};
         this.extra = {};
         this.appVersion = '';
-        if (window.frameElement) this.parent_url = window.frameElement.src;
+        if (window.location!=window.parent.location || parent !== window)
+            this.parent_url = window.parent.location.href;
+        else if (window.frameElement)
+            this.parent_url = window.frameElement.src;
+        else if (window != top || top !== self)
+            this.parent_url = top.location.href;
     }    
 
     addStack(error)
