@@ -277,6 +277,7 @@ class erronetic
         var msg = this._create(error.message, error); 
         msg.extra = utils.primitify(data);       
         msg.level = config.LOGS.ERROR;
+        msg.trigger = config.LOG_TRIGGER.ROUTINE;
         this._commit(msg);
     }
 

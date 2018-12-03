@@ -19,6 +19,7 @@ export default class Exception
         this.browser = '';
         this.browser_name = '';
         this.logger = 'javascript';
+        this.trigger = config.LOG_TRIGGER.WIN;
         this.version = __VERSION__;
         this.client_id = -1;
         this.meta = {};
