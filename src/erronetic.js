@@ -1,8 +1,8 @@
 import utils from './utils';
 import config from './config';
 import Exception from './exception';
-var UAParser = require('./vendor/ua-parser');
-var StackTrace = require('./vendor/stacktrace');
+import {UAParser} from 'ua-parser-js';
+import StackTrace from 'stacktrace-js';
 import murmurhash3_32_gc from './vendor/murmurhash3';
 
 class erronetic
@@ -37,7 +37,7 @@ class erronetic
             this._writeError(error.name, msg, stackframes);
         })
         .catch(()=>{
-            this._logDebug('ErroneticCommit Error:' + error.message);
+            this._logDebug('Erronetic.Commit Error:' + error.message);
         });
     }
 

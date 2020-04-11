@@ -1,0 +1,9 @@
+Name: Erronetic 
+File: erronetic.min.js
+Generated on: {date}
+Package: erronetic-js
+Version: {version}
+Author: CodeSphinx <https://twitter.com/codesphinx>
+Description: Erronetic is a JavaScript error tracking library
+Source: git://github.com/codesphinxx/erronetic-js
+License: MIT

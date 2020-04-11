@@ -1,6 +1,3 @@
-const LEVELS = ['info','warn','error'];
-const PRIMITIVES = ['undefined','boolean','number','string'];
-
 export default class utils
 {
     constructor()
@@ -21,7 +18,7 @@ export default class utils
             for(var i = 0; i < value.length; i++)
             {
                 var data_type = typeof value[i];
-                if (PRIMITIVES.indexOf(data_type) != -1)
+                if (utils.PRIMITIVES.indexOf(data_type) != -1)
                 {
                     result += i===0 ? utils.stringify(value[i]) : ' ' + utils.stringify(value[i]);
                 }
@@ -68,7 +65,7 @@ export default class utils
             for(var i = 0; i < value.length; i++)
             {
                 var data_type = typeof value[i];
-                if (PRIMITIVES.indexOf(data_type) != -1)
+                if (utils.PRIMITIVES.indexOf(data_type) != -1)
                 {
                     result.push(value[i]);
                 } 
@@ -84,7 +81,7 @@ export default class utils
             for (var key in value)
             {
                 var data_type = typeof value[key];
-                if (PRIMITIVES.indexOf(data_type) != -1)
+                if (utils.PRIMITIVES.indexOf(data_type) != -1)
                 {
                     result[key] = value[key];
                 }
@@ -100,7 +97,7 @@ export default class utils
 
     static isLogLevel(value)
     {
-        return value ? (LEVELS.indexOf(value) !== -1) : false;
+        return value ? (utils.LEVELS.indexOf(value) !== -1) : false;
     }
 
     static isObject(what) 
@@ -217,3 +214,6 @@ export default class utils
         ", Device YDPI: " + screen.deviceYDPI;
     }
 }
+
+utils.LEVELS = ['info','warn','error'];
+utils.PRIMITIVES = ['undefined','boolean','number','string'];

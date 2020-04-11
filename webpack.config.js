@@ -1,12 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
-const MinifyPlugin = require("babel-minify-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 let pkg = JSON.parse(fs.readFileSync(__dirname + '/package.json').toString());
+let banner = fs.readFileSync(__dirname + '/banner.info').toString();
+banner = banner.replace('{version}', pkg.version).replace('{date}', (new Date()).toDateString());
 
 let plugins = [
-  new MinifyPlugin(),
+  new webpack.BannerPlugin({
+    banner: banner
+  }),
   new webpack.DefinePlugin({
     __VERSION__: JSON.stringify(pkg.version),
   }),
@@ -22,7 +26,6 @@ const config = {
     filename: 'erronetic.min.js',
     libraryTarget: 'umd',
     umdNamedDefine: true
-
   },
   module: {
     rules: [
@@ -33,8 +36,19 @@ const config = {
       }
     ]
   },
+  optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          extractComments: false,
+          terserOptions: {
+            mangle: true, 
+          },
+        }),
+      ],
+  },
   resolve: {
-    modules: [path.resolve('./src')],
+    modules: ['./node_modules', path.resolve('./src')],
     extensions: ['.json', '.js']
   },
   plugins: plugins
