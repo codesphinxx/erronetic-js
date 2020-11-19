@@ -125,14 +125,17 @@ export default class utils
         return value == null || value == undefined;
     }
 
+    /**
+     * @param {String} value 
+     */
     static isNullOrEmpty(value)
     {
         if (value === null || value === undefined)
             return true;
 
-        if (!value instanceof String)
+        if (typeof value != 'string')
         {
-            throw new TypeError('value must be of type String.')
+            return true;
         }
 
         var text = value.replace('/ /g', '');

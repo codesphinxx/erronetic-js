@@ -1,6 +1,6 @@
 {
   "name": "erronetic-js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Erronetic client library.",
   "author": "Code sphinx <https://twitter.com/codesphinx>",
   "keywords": [
@@ -10,23 +10,27 @@
     "logging",
     "erronetic"
   ],
-  "repository": "git://github.com/codesphinxx/erronetic-js.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codesphinxx/erronetic-js.git"
+  },
   "license": "MIT",
   "scripts": {
     "build": "webpack"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.1.0",
-    "eslint": "^6.8.0",
+    "babel-loader": "^8.2.1",
+    "eslint": "^7.13.0",
     "stacktrace-js": "^2.0.2",
-    "terser-webpack-plugin": "^2.3.5",
-    "ua-parser-js": "^0.7.21",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.11",
-    "webpack-command": "^0.5.0"
+    "terser-webpack-plugin": "^5.0.3",
+    "ua-parser-js": "^0.7.22",
+    "webpack": "^5.5.1",
+    "webpack-cli": "^4.2.0"
   },
-  "dependencies": {}
+  "engines": {
+    "node": ">= 10.13.0"
+  }
 }

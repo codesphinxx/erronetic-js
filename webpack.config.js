@@ -18,11 +18,10 @@ let plugins = [
 ];
 
 const config = {
-  entry: __dirname + '/src/index.js',
-  devtool:'none',
+  entry: path.resolve(__dirname, './src/index.js'),
   mode: "production",
   output: {
-    path: __dirname + '/build',
+    path: path.resolve(__dirname, './build'),
     filename: 'erronetic.min.js',
     libraryTarget: 'umd',
     umdNamedDefine: true
